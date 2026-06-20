@@ -1,0 +1,189 @@
+# =============================================================================
+# Hindi (hi-IN) YouTube source list
+# =============================================================================
+#
+# PLACEHOLDER FILE — every entry below is a TEMPLATE, not a real source.
+# Do NOT run the pipeline against this file as-is. Replace each entry with
+# a real, manually-watched YouTube video before downloading anything.
+#
+# Before adding ANY real entry to this file, you must have personally:
+#   1. Watched the source video at the given start_sec–end_sec range
+#   2. Confirmed exactly ONE speaker is talking for that entire range
+#      (no panel, no debate, no interviewer cutting in, no audience
+#      member shouting a question)
+#   3. Confirmed there is no background music bed or score during the
+#      range (a brief music sting before/after the range is fine, but
+#      not underneath the speech itself)
+#   4. Confirmed you understand the speech well enough to judge later
+#      whether Sarvam's ASR transcript and emotion tag are actually
+#      correct — if you can't tell whether a transcript is right, you
+#      can't catch the pipeline's mistakes. This matters especially for
+#      Hindi if your own fluency is closer to conversational than
+#      native — be honest with yourself about which clips you can
+#      actually verify by ear vs. which you'd just be guessing on.
+#   5. Checked the channel's general reuse/licensing posture for a
+#      public research dataset (e.g. is it an official channel known
+#      to license content for reuse, or does it explicitly restrict
+#      redistribution — if in doubt, skip the source rather than guess).
+#      This applies with extra care to any official/government speech
+#      recordings — verify reuse rights explicitly, don't assume.
+#
+# Field reference:
+#   url                    : full YouTube watch URL
+#   start_sec / end_sec    : the exact range you watched and verified
+#                            (not the whole video) — feeds directly into
+#                            src/downloader.py's download_segment()
+#   provisional_emotion    : YOUR BEST GUESS after watching once.
+#                            NOT TRUSTED — every provisional_* field gets
+#                            re-checked against the Sarvam LLM tag AND
+#                            your own ear during the manual audit pass
+#                            (BUILD_GUIDE.md Phase 6). Treat this as a
+#                            note to yourself, not a final label.
+#   provisional_style      : same caveat as above — draft only.
+#   expected_speaker_count : should be 1 for every entry in this file.
+#                            If you ever find yourself writing anything
+#                            other than 1 here, the source doesn't belong
+#                            in this dataset — find a different clip.
+#   source_type            : one of: news_solo_segment, standup_solo,
+#                            narrated_storytelling_podcast,
+#                            official_address_solo (or a new category
+#                            you define and document if none fit)
+#
+# =============================================================================
+
+sources:
+
+  # --- PLACEHOLDER 1 —  TEDx Talk URL for "Power of Learning | Nitin Vijay | TEDxRTU" ---
+  - url: "https://youtu.be/Ikp9XdE9Xf4?si=UaWDl2B1eTjYzxKs" 
+    start_sec: 30
+    end_sec: 700
+    provisional_emotion: "excited"
+    provisional_style: "motivational"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Nitin Vijay (NV Sir) delivering a high-energy, narrative-driven presentation.
+    # His delivery builds from institutional narrative rules to an urgent call to action.
+    # This creates a dual conflict: your text tagger may split on "storytelling" due to the structural arc,
+    # while his elevated, booming classroom-style projection borders heavily on an "excited" emotion.
+    # Auditor pass must verify if the performance baseline matches "motivational" style cleanly.
+
+  # --- PLACEHOLDER 2 —  Parliament Session | Debate
+  - url: "https://youtu.be/8YBXLuZAx9I?si=qhelyldiSVVEI7gM" 
+    start_sec: 38
+    end_sec: 58
+    provisional_emotion: "angry"
+    provisional_style: "dramatic"
+    expected_speaker_count: 1
+    source_type: "news_solo_segment"
+    # notes: News anchor Amish Devgan erupting in high-intensity frustration 
+    # during a live parliamentary debate segment ("mai kyu jawab du isko kaun hai ye").
+    # Extremely high vocal affect, shouting, and confrontational prose.
+    # While the broader context is an interactive panel debate, this specific 20-second window 
+    # isolates a solo outburst, making it a valuable edge case for an "angry" baseline. 
+    # Auditor pass must verify if overlapping cross-talk from the panel leaks into these exact seconds.
+  
+  # --- PLACEHOLDER 3 —  Aman Chopra delivering a news segment using a standard anchor tone
+
+  - url: "https://www.youtube.com/live/PR_OgaNRTZ4?si=SHaBnVuUnZ65VjfA" 
+    start_sec: 135
+    end_sec: 216
+    provisional_emotion: "neutral"
+    provisional_style: "informational"
+    expected_speaker_count: 1
+    source_type: "news_solo_segment"
+    # notes: Aman Chopra delivering a news segment using a standard anchor tone,
+    # but incorporating conversational filler phrases ("hmm", "ye dekhaenge", "ye kyu hua").
+    # This creates a classic text-vs-prosody gap: the text looks conversational/informational, 
+    # but the vocal delivery maintains a formal, rigid newsroom baseline.
+    # Human auditor pass is essential to confirm whether the style should lean 
+    # strictly "informational" or shift to "conversational" based on the final delivery pace.
+
+   # --- PLACEHOLDER 4 — The Hero of Your Own Story | Future Beyond Past | Vaishnavi Srivastava | TEDxIIITDelhi ---------
+  - url: "https://www.youtube.com/watch?v=q4D9SgJ2AVs"
+    start_sec: 0
+    end_sec: 164
+    provisional_emotion: "sad"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Vaishnavi Srivastava delivering a low-energy, vulnerable talk about heartbreak and self-doubt.
+    # Her vocal performance sounds noticeably fatigued/tired, yet structurally framed as a presentation pitch.
+    # This creates a significant prosody gap: the structural framework is a TEDx pitch ("storytelling"), 
+    # but the raw vocal energy maps much closer to a subdued, weary "sad" or "neutral".
+    # Human auditor must verify if the tired, detached quality compromises the training target.
+
+   # --- PLACEHOLDER 5 — The Hero of Your Own Story | Future Beyond Past | Vaishnavi Srivastava | TEDxIIITDelhi ---------
+
+  - url: "https://www.youtube.com/watch?v=q4D9SgJ2AVs"
+    start_sec: 165
+    end_sec: 300
+    provisional_emotion: "happy"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Shift in tone after 02:46 ("video views reach"). 
+    # Speaker transitions from a tired, heavy demeanor into a happy and excited delivery frame.
+    # This marks a critical intra-clip prosody shift where the emotional affect completely flips.
+    # Manual correction during the audit pass is essential here to capture the happy/excited 
+    # transition baseline cleanly, ensuring the segment boundaries reflect the shift.
+
+   # --- PLACEHOLDER 6 — The Hero of Your Own Story | Future Beyond Past | Vaishnavi Srivastava | TEDxIIITDelhi ---------
+  - url: "https://www.youtube.com/watch?v=q4D9SgJ2AVs"
+    start_sec: 300
+    end_sec: 477
+    provisional_emotion: "neutral"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Final section of Vaishnavi Srivastava's talk at TEDxIIITDelhi.
+    # The speaker isn't sounding "excited" or high-energy; instead, her tone carries a quiet, 
+    # composed sense of thankfulness and spiritual faith ("believer in god").
+    # This sets up a subtle prosody gap where a text classifier might mistake words of deep personal 
+    # conviction for a loud "motivational" or "excited" pitch, but the actual vocal delivery 
+    # is grounded, humble, and calm. Human verification is essential to keep this serene baseline intact.
+
+   # --- PLACEHOLDER 7 — How to make your Pitch Dec by srishtii_verma ---------
+  - url: "https://www.youtube.com/watch?v=v8zCV0bC6m8"
+    start_sec: 5
+    end_sec: 77
+    provisional_emotion: "neutral"
+    provisional_style: "informational"
+    expected_speaker_count: 1
+    source_type: "lecture"
+    # notes: Srishti Verma breaking down pitch deck steps in an educational short/video.
+    # The delivery is focused purely on conveying business facts and procedures.
+    # This creates a solid "informational" baseline with flat, objective "neutral" prosody.
+    # Highly predictable text-to-prosody mapping, excellent for clean informational targets.
+
+   # --- PLACEHOLDER 8 — Dr. Vikas Divyakirti delivering a long-form institutional strategy seminar---------
+
+  - url: "https://www.youtube.com/watch?v=mfZj7KpMPC8"
+    start_sec: 106
+    end_sec: 800
+    provisional_emotion: "neutral"
+    provisional_style: "lecture"
+    expected_speaker_count: 1
+    source_type: "lecture"
+    # notes: Dr. Vikas Divyakirti delivering a long-form institutional strategy seminar.
+    # The style is distinctively "lecture" / teaching format — measured, clear, and structured.
+    # The text contains strategic frameworks, syllabus breakdowns, and guidance rules.
+    # This serves as a strong informational baseline with standard professional teaching prosody.
+
+ # --- PLACEHOLDER 9 —  हिन्दी टीचर डेमो@PDclassesManojsharma
+
+  - url: "https://youtu.be/3Evlm6qyUjw?si=VdJB_9mDjZq_q0xg"
+    start_sec: 10
+    end_sec: 300
+    provisional_emotion: "neutral"
+    provisional_style: "lecture"
+    expected_speaker_count: 1
+    source_type: "lecture"
+
+# --- PLACEHOLDER 10
+  - url: "https://www.youtube.com/watch?v=SIPXiOEmmIg"
+    start_sec: 0
+    end_sec: 547          # पूरे 9 मिनट और 7 सेकंड के स्पीच सेगमेंट को स्लाइस करता है
+    provisional_emotion: "neutral"
+    provisional_style: "motivational"
+    expected_speaker_count: 1
+    source_type: "speech_segment"

@@ -1,0 +1,722 @@
+[
+  {
+    "id": "en_src001",
+    "created_at": "2026-06-19T16:06:43.116288+00:00",
+    "updated_at": "2026-06-19T17:13:08.013311+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=7G_crlBBor0",
+      "source_title": null,
+      "source_type": "startup_pitch",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 200,
+      "provisional_emotion": "excited",
+      "provisional_style": "formal"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src001.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src001_seg001",
+    "created_at": "2026-06-20T11:35:19.329357+00:00",
+    "updated_at": "2026-06-20T11:36:10.057369+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=7G_crlBBor0",
+      "source_title": null,
+      "source_type": "startup_pitch",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 200,
+      "provisional_emotion": "excited",
+      "provisional_style": "formal"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src001.wav"
+      },
+      "preprocess": {
+        "passed": true,
+        "reason": null,
+        "cleaned_path": "processed/en_src001.wav"
+      },
+      "segment": {
+        "passed": true,
+        "reason": null,
+        "segment_index": 1,
+        "processed_path": "segments/en_src001_seg001.wav",
+        "duration_sec": 8.9
+      },
+      "quality_check": {
+        "passed": true,
+        "reason": null,
+        "snr_db": 19.99,
+        "silence_ratio": 0.013,
+        "clipping_pct": 0.0,
+        "quality_score": 0.7689,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src001_seg002",
+    "created_at": "2026-06-20T11:35:19.331549+00:00",
+    "updated_at": "2026-06-20T11:36:10.074104+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=7G_crlBBor0",
+      "source_title": null,
+      "source_type": "startup_pitch",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 200,
+      "provisional_emotion": "excited",
+      "provisional_style": "formal"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src001.wav"
+      },
+      "preprocess": {
+        "passed": true,
+        "reason": null,
+        "cleaned_path": "processed/en_src001.wav"
+      },
+      "segment": {
+        "passed": true,
+        "reason": null,
+        "segment_index": 2,
+        "processed_path": "segments/en_src001_seg002.wav",
+        "duration_sec": 7.4
+      },
+      "quality_check": {
+        "passed": true,
+        "reason": null,
+        "snr_db": 23.78,
+        "silence_ratio": 0.0533,
+        "clipping_pct": 0.0,
+        "quality_score": 0.7948,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src002",
+    "created_at": "2026-06-19T20:14:17.007531+00:00",
+    "updated_at": "2026-06-19T20:14:17.007531+00:00",
+    "source_info": {
+      "url": null,
+      "source_title": null,
+      "source_type": null,
+      "language": null,
+      "start_sec": null,
+      "end_sec": null,
+      "provisional_emotion": null,
+      "provisional_style": null
+    },
+    "stages": {
+      "download": {
+        "passed": false,
+        "reason": "download_failed",
+        "raw_path": null
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src003",
+    "created_at": "2026-06-19T20:14:23.996464+00:00",
+    "updated_at": "2026-06-19T20:14:23.996464+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=eHAuYhTY7UU",
+      "source_title": null,
+      "source_type": "news_solo_segment",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 57,
+      "provisional_emotion": "angry",
+      "provisional_style": "conversational"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src003.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src004",
+    "created_at": "2026-06-19T22:36:54.550334+00:00",
+    "updated_at": "2026-06-19T22:36:54.550334+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=yPG32EGYXSU",
+      "source_title": null,
+      "source_type": "personal_testimony",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 55,
+      "provisional_emotion": "sad",
+      "provisional_style": "conversational"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src004.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src005",
+    "created_at": "2026-06-19T22:39:24.832717+00:00",
+    "updated_at": "2026-06-19T22:39:24.832717+00:00",
+    "source_info": {
+      "url": "https://www.youtube.com/watch?v=sKvMxZ284AA",
+      "source_title": null,
+      "source_type": "tedx_talk",
+      "language": "en-IN",
+      "start_sec": 0,
+      "end_sec": 295,
+      "provisional_emotion": "motivational",
+      "provisional_style": "storytelling"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/en_src005.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "en_src006",
+    "created_at": "2026-06-19T23:02:25.889921+00:00",
+    "updated_at": "2026-06-19T23:02:25.889921+00:00",
+    "source_info": {
+      "url": null,
+      "source_title": null,
+      "source_type": null,
+      "language": null,
+      "start_sec": null,
+      "end_sec": null,
+      "provisional_emotion": null,
+      "provisional_style": null
+    },
+    "stages": {
+      "download": {
+        "passed": false,
+        "reason": "download_failed",
+        "raw_path": null
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "hi_src001",
+    "created_at": "2026-06-19T15:49:30.090189+00:00",
+    "updated_at": "2026-06-19T15:49:30.090189+00:00",
+    "source_info": {
+      "url": "https://youtu.be/Ikp9XdE9Xf4?si=UaWDl2B1eTjYzxKs",
+      "source_title": null,
+      "source_type": "tedx_talk",
+      "language": "hi-IN",
+      "start_sec": 30,
+      "end_sec": 700,
+      "provisional_emotion": "excited",
+      "provisional_style": "motivational"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/hi_src001.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  },
+  {
+    "id": "hi_src002",
+    "created_at": "2026-06-19T15:49:35.629585+00:00",
+    "updated_at": "2026-06-19T15:49:35.629585+00:00",
+    "source_info": {
+      "url": "https://youtu.be/8YBXLuZAx9I?si=qhelyldiSVVEI7gM",
+      "source_title": null,
+      "source_type": "news_solo_segment",
+      "language": "hi-IN",
+      "start_sec": 38,
+      "end_sec": 58,
+      "provisional_emotion": "angry",
+      "provisional_style": "dramatic"
+    },
+    "stages": {
+      "download": {
+        "passed": true,
+        "reason": null,
+        "raw_path": "raw/hi_src002.wav"
+      },
+      "preprocess": {
+        "passed": null,
+        "reason": null,
+        "cleaned_path": null
+      },
+      "segment": {
+        "passed": null,
+        "reason": null,
+        "segment_index": null,
+        "processed_path": null,
+        "duration_sec": null
+      },
+      "quality_check": {
+        "passed": null,
+        "reason": null,
+        "snr_db": null,
+        "silence_ratio": null,
+        "clipping_pct": null,
+        "quality_score": null,
+        "reject_reasons": []
+      },
+      "transcription": {
+        "passed": null,
+        "reason": null,
+        "transcript": null,
+        "model": null,
+        "language_code": null
+      },
+      "diarization": {
+        "passed": null,
+        "reason": null,
+        "speaker_count": null,
+        "is_single_speaker": null
+      },
+      "emotion_tagging": {
+        "passed": null,
+        "reason": null,
+        "emotion": null,
+        "style": null,
+        "confidence": null,
+        "needs_manual_review": null,
+        "model_used": null
+      }
+    },
+    "manual_review": {
+      "listened": false,
+      "transcript_corrected": null,
+      "emotion_corrected": null,
+      "notes": "",
+      "verdict": null
+    }
+  }
+]

@@ -1,0 +1,25 @@
+# Pipeline configuration. These are starting values — expect to revise
+# snr_threshold_db, silence_ratio_max, and clipping_max_pct after the
+# manual listening pass on the small batch (see BUILD_GUIDE.md Phase 6).
+# Document any change you make here in the PDF report, with the reason why.
+
+audio:
+  sample_rate: 22050          # Hz, mono — matches what segmenter/quality_checker expect
+
+clip:
+  target_clip_min_sec: 15
+  target_clip_max_sec: 30
+
+quality_thresholds:
+  snr_threshold_db: 18.0      # reject clip if below this
+  silence_ratio_max: 0.30     # reject clip if silence fraction exceeds this
+  clipping_max_pct: 0.1       # reject clip if clipped-sample fraction exceeds this (percent, e.g. 0.1 = 0.1%)
+
+languages:
+  - en-IN
+  - hi-IN
+
+paths:
+  raw_dir: raw
+  processed_dir: processed
+  output_dir: data

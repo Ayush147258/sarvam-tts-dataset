@@ -1,0 +1,206 @@
+# =============================================================================
+# Indian English (en-IN) YouTube source list
+# =============================================================================
+#
+# PLACEHOLDER FILE — every entry below is a TEMPLATE, not a real source.
+# Do NOT run the pipeline against this file as-is. Replace each entry with
+# a real, manually-watched YouTube video before downloading anything.
+#
+# Before adding ANY real entry to this file, you must have personally:
+#   1. Watched the source video at the given start_sec–end_sec range
+#   2. Confirmed exactly ONE speaker is talking for that entire range
+#      (no panel, no debate, no interviewer cutting in, no audience
+#      member shouting a question)
+#   3. Confirmed there is no background music bed or score during the
+#      range (a brief music sting before/after the range is fine, but
+#      not underneath the speech itself)
+#   4. Confirmed you understand the speech well enough to judge later
+#      whether Sarvam's ASR transcript and emotion tag are actually
+#      correct — if you can't tell whether a transcript is right, you
+#      can't catch the pipeline's mistakes
+#   5. Checked the channel's general reuse/licensing posture for a
+#      public research dataset (e.g. is it an official channel known
+#      to license content for reuse, or does it explicitly restrict
+#      redistribution — if in doubt, skip the source rather than guess)
+#
+# Field reference:
+#   url                    : full YouTube watch URL
+#   start_sec / end_sec    : the exact range you watched and verified
+#                            (not the whole video) — feeds directly into
+#                            src/downloader.py's download_segment()
+#   provisional_emotion    : YOUR BEST GUESS after watching once.
+#                            NOT TRUSTED — every provisional_* field gets
+#                            re-checked against the Sarvam LLM tag AND
+#                            your own ear during the manual audit pass
+#                            (BUILD_GUIDE.md Phase 6). Treat this as a
+#                            note to yourself, not a final label.
+#   provisional_style      : same caveat as above — draft only.
+#   expected_speaker_count : should be 1 for every entry in this file.
+#                            If you ever find yourself writing anything
+#                            other than 1 here, the source doesn't belong
+#                            in this dataset — find a different clip.
+#   source_type            : one of: tedx_talk, news_solo_segment,
+#                            lecture, standup_solo, narrated_documentary
+#                            (or a new category you define and document
+#                            if none of these fit)
+#
+# =============================================================================
+
+sources:
+    # --- PLACEHOLDER 1 — Live Pitching @ India Startup Summit - SESSION 2 -------------------
+  - url: "https://www.youtube.com/watch?v=7G_crlBBor0"
+    start_sec: 0
+    end_sec: 200
+    provisional_emotion: "excited"
+    provisional_style: "formal"
+    expected_speaker_count: 1
+    source_type: "startup_pitch"
+     # notes: live startup pitch session. speaker opens with high
+     # energy excitement then transitions into formal structured
+     # pitch delivery. emotion shifts mid-video — audit each segment
+     # individually. early segments = excited, mid/late = formal.
+  
+    # --- PLACEHOLDER 2 — Ravi Dubey delivering a vibrant, uplifting motivational talk at TEDxGGDSDCollege -------------------
+  - url: "https://www.youtube.com/watch?v=iQaiMoUn-zc"
+    start_sec: 0
+    end_sec: 1110
+    provisional_emotion: "happy"
+    provisional_style: "motivational"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+  # notes: Ravi Dubey delivering a vibrant, uplifting motivational talk at TEDxGGDSDCollege.
+  # His delivery maintains an energetic, welcoming, and noticeably happy/positive acoustic register.
+  # This makes it a stellar long-form option for your dataset pipeline to chop automatically.
+  # The text pairs naturally with motivational presentation features, while the voice anchors 
+  # a clean "happy" emotion baseline with an expressive storytelling cadence.
+
+    # --- PLACEHOLDER 3 — West Calls Indian Media Coverage "Ill-informed" | Vantage With Palki Sharma
+  - url: "https://www.youtube.com/watch?v=eHAuYhTY7UU"
+    start_sec: 0
+    end_sec: 57
+    provisional_emotion: "angry"
+    provisional_style: "conversational"
+    expected_speaker_count: 1
+    source_type: "news_solo_segment"
+    # notes: Palki Sharma calling out western arrogance in an editorial segment.
+    # Strong edge of irritation, frustration, and sharp confrontation.
+    # Delivers the critique in her signature relaxed yet punchy narrative back-and-forth mode.
+  
+    # --- PLACEHOLDER 4 — Palki Sharma Upadhyay spoke about the challenges of balancing content and views.
+  - url: "https://www.youtube.com/watch?v=yPG32EGYXSU"
+    start_sec: 0
+    end_sec: 55
+    provisional_emotion: "sad"
+    provisional_style: "conversational"
+    expected_speaker_count: 1
+    source_type: "personal_testimony"
+    # notes: Palki Sharma sharing a deeply vulnerable personal story about 
+    # the gut-wrenching struggle of balancing intense professional studio demands 
+    # with a crisis at home (her daughter crying and being ill). 
+    # Her vocal delivery is audibly emotional, heavy, and strained with sadness. 
+    # The text-only tagger will capture the grief/melancholy content well, 
+    # but human audit verification is vital to preserve this raw, high-affect emotional clip.
+
+  # --- PLACEHOLDER 5 — How "SHE" became an IAS officer | Surabhi Gautam  -------------------
+  - url: "https://www.youtube.com/watch?v=sKvMxZ284AA"
+    start_sec: 0
+    end_sec: 295
+    provisional_emotion: "motivational"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Surabhi Gautam TEDxRGPV. primarily Indian English with
+    # natural Hindi code-switching mid-speech (e.g. "gaun ki beti
+    # kaisi ho"). saaras:v3 handles this well. during audit check
+    # that ASR correctly transcribed the Hindi phrase — hand-correct
+    # if not. keep language tag as "en-IN" since primary language
+    # is English.
+  
+  # --- PLACEHOLDER 6 — How "SHE" became an IAS officer | Surabhi Gautam  -------------------
+  - url: "https://www.youtube.com/watch?v=sKvMxZ284AA"
+    start_sec: 304
+    end_sec: 353
+    provisional_emotion: "motivational"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Surabhi Gautam TEDxRGPV. primarily Indian English with
+    # natural Hindi code-switching mid-speech (e.g. "gaun ki beti
+    # kaisi ho"). saaras:v3 handles this well. during audit check
+    # that ASR correctly transcribed the Hindi phrase — hand-correct
+    # if not. keep language tag as "en-IN" since primary language
+    # is English.
+
+  # --- PLACEHOLDER 7 — How "SHE" became an IAS officer | Surabhi Gautam  -------------------
+  - url: "https://www.youtube.com/watch?v=sKvMxZ284AA"
+    start_sec: 360
+    end_sec: 423
+    provisional_emotion: "motivational"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "tedx_talk"
+    # notes: Surabhi Gautam TEDxRGPV. primarily Indian English with
+    # natural Hindi code-switching mid-speech (e.g. "gaun ki beti
+    # kaisi ho"). saaras:v3 handles this well. during audit check
+    # that ASR correctly transcribed the Hindi phrase — hand-correct
+    # if not. keep language tag as "en-IN" since primary language
+    # is English.
+  
+  # --- PLACEHOLDER 8 — ENGLISH SPEECH | PALKI SHARMA: Tell India's Story  ---------
+  - url: "https://www.youtube.com/watch?v=-Z9b_v612QQ"
+    start_sec: 0
+    end_sec: 482    # 8 minutes = 480 seconds
+    provisional_emotion: "formal"
+    provisional_style: "formal"
+    expected_speaker_count: 1
+    source_type: "award_ceremony_speech"
+    # notes: Palki Sharma 8-min award ceremony address. clear audio,
+    # authoritative news-anchor delivery throughout. pipeline will
+    # split into ~18-20 segments via VAD. check first and last
+    # segment edges for applause bleed.
+  
+
+  # --- PLACEHOLDER 9 — ASHWINI JOHN: The Power Of Forgiveness  ---------
+  - url: "https://www.youtube.com/watch?v=oMZZGzPg254"
+    start_sec: 29
+    end_sec: 79
+    provisional_emotion: "happy"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "motivational_talk"
+    # notes: Ashwini John, Youth ICON Award 2017. personal storytelling
+    # about forgiveness and healing. mix of touching emotional moments
+    # and humour — emotion may shift segment to segment between
+    # happy, sad, and conversational. Indian English speaker, clean
+    # audio expected from award ceremony setup.
+    # during audit: tag each segment individually — some may be
+    # sad/reflective, others happy/humorous. don't apply one emotion
+    # to all 18-20 segments blindly.
+
+  # --- PLACEHOLDER 10 — ASHWINI JOHN: The Power Of Forgiveness  ---------
+  - url: "https://www.youtube.com/watch?v=oMZZGzPg254"
+    start_sec: 82
+    end_sec: 576
+    provisional_emotion: "motivational"
+    provisional_style: "storytelling"
+    expected_speaker_count: 1
+    source_type: "motivational_talk"
+    # notes: Ashwini John, Youth ICON Award 2017. personal storytelling
+    # about forgiveness and healing. mix of touching emotional moments
+    # and humour — emotion may shift segment to segment between
+    # happy, sad, and conversational. Indian English speaker, clean
+    
+  # ---  PLACEHOLDER 11 — How does NPTEL certification work? | NPTEL Awareness E-Workshop | Ms. Bharathi | NPTEL
+  - url: "https://www.youtube.com/watch?v=jbmaoQzewv8"
+    start_sec: 40
+    end_sec: 506
+    provisional_emotion: "neutral"
+    provisional_style: "formal"
+    expected_speaker_count: 1
+    source_type: "lecture"
+    # notes: Ms. Bharathi (Head of Operations, NPTEL) delivering an official explanatory session.
+    # Although she is highly positive and praising the organization, the overarching 
+    # delivery mode remains structurally institutional, composed, and professional. 
+    # This creates a classic text-vs-prosody gap: an AI tagger will easily pick up on 
+    # "formal" due to the vocabulary, but human validation is required to ensure the pride 
+    # and warmth in her praise don't cross into an uncharacteristically high "excited" tag.
