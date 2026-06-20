@@ -25,6 +25,8 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+.test_tmp/
+pytest-cache-files-*/
 .ruff_cache/
 .numba_cache/
 
@@ -37,3 +39,33 @@ Thumbs.db
 
 # NOTE: uv.lock is intentionally NOT ignored — it should be committed
 # so the environment is reproducible.
+# Pipeline temp files
+transcripts.json
+transcripts_all.json
+transcripts_diarized.json
+transcripts_final.json
+transcripts_tagged.json
+
+# Build scripts (temp)
+transcribe_run.py
+transcribe_good.py
+transcribe_all.py
+quality_check_run.py
+segment_save.py
+filter_segments.py
+check_uncertain.py
+fix_uncertain.py
+check_transcripts.py
+build_dataset.py
+upload_hf.py
+diarize_all.py
+tag_emotions.py
+
+# Dataset cache and segments
+data/dataset_cache/
+segments/
+
+# Notebooks output
+notebooks/chart_*.png
+notebooks/flagged_clips.csv
+notebooks/summary_stats.txt

@@ -88,12 +88,16 @@ $elapsed = ((Get-Date) - $startTime).TotalSeconds
 
 if ($exitCode -ne 0) {
     Write-Fail "Pipeline failed with exit code $exitCode after ${elapsed}s."
-    Write-Warn "After fixing the error, resume with: .\scripts\run_pipeline.ps1 -StageFrom $StageFrom -SourcesFile $SourcesFile -Language $Language"
+    Write-Warn "After fixing the error, resume with: .\the pipeline\scripts\run_pipeline.ps1 -StageFrom $StageFrom -SourcesFile $SourcesFile -Language $Language"
     exit $exitCode
 }
 
 Write-OK "Pipeline complete in ${elapsed}s."
 Write-Host ""
+Write-Host "Next steps:" -ForegroundColor White
+Write-Info "1. uv run python the pipeline/scripts/run_audit.py"
+Write-Info "2. uv run python -m src.dataset_builder"
+Write-Info "3. uv run python -m src.upload_hf --repo-id <user/dataset>"
 Write-Host "Next steps:" -ForegroundColor White
 Write-Info "1. uv run python scripts/run_audit.py"
 Write-Info "2. uv run python -m src.dataset_builder"

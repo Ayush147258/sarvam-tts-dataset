@@ -56,8 +56,9 @@ def _load_sources(path: Path, language: str, limit: int | None) -> list[dict]:
     return normalized[:limit] if limit else normalized
 
 
-def _stage_enabled(stage: str, stage_from: str) -> bool:
-    return STAGES.index(stage) >= STAGES.index(stage_from)
+def _stage_enabled(stage: str, stage_from: str, stage_to: str = "emotion") -> bool:
+    stage_index = STAGES.index(stage)
+    return STAGES.index(stage_from) <= stage_index <= STAGES.index(stage_to)
 
 
 def _extract_segment(input_path: Path, output_path: Path, start_sec: float, end_sec: float) -> Path:
@@ -107,6 +108,30 @@ def _audio_path(record: dict) -> Path | None:
     return None
 
 
+def _mark_stale_segments(source_id: str) -> None:
+    prefix = f"{source_id}_seg"
+    for record in all_clips():
+        clip_id = record["id"]
+        if not clip_id.startswith(prefix):
+            continue
+        update_clip(
+            clip_id,
+            stages={
+                "segment": {
+                    "passed": False,
+                    "reason": "stale_after_resegmentation",
+                    "processed_path": None,
+                    "duration_sec": None,
+                }
+            },
+            manual_review={
+                "listened": False,
+                "verdict": None,
+                "notes": "Stale segment record from an earlier segmentation pass.",
+            },
+        )
+
+
 def _iter_stage_records(limit: int | None) -> Iterable[dict]:
     records = _records_with_segments()
     return records[:limit] if limit else records
@@ -117,20 +142,24 @@ def run_pipeline(
     language: str,
     limit: int | None = None,
     stage_from: str = "download",
+    stage_to: str = "emotion",
 ) -> None:
+    if STAGES.index(stage_from) > STAGES.index(stage_to):
+        raise ValueError(f"stage_from={stage_from!r} must come before stage_to={stage_to!r}.")
+
     sources_file = _project_path(sources_file)
     sources = _load_sources(sources_file, language, limit)
     raw_dir = _project_path(settings.raw_dir)
     processed_dir = _project_path(settings.processed_dir)
 
-    if not sources and _stage_enabled("download", stage_from):
+    if not sources and _stage_enabled("download", stage_from, stage_to):
         raise RuntimeError(
             f"No real sources found in {sources_file}. Replace REPLACE_ME placeholders first."
         )
 
     load_manifest()
 
-    if _stage_enabled("download", stage_from):
+    if _stage_enabled("download", stage_from, stage_to):
         for source in sources:
             raw_path = download_segment(
                 url=source["url"],
@@ -158,7 +187,7 @@ def run_pipeline(
                 update_clip(source["source_id"], stages={"download": {"passed": False, "reason": "download_failed"}})
             save_manifest()
 
-    if _stage_enabled("preprocess", stage_from):
+    if _stage_enabled("preprocess", stage_from, stage_to):
         for source in sources:
             source_id = source["source_id"]
             raw_path = raw_dir / f"{source_id}.wav"
@@ -171,10 +200,11 @@ def run_pipeline(
                 update_clip(source_id, stages={"preprocess": {"passed": False, "reason": str(exc)}})
             save_manifest()
 
-    if _stage_enabled("segment", stage_from):
+    if _stage_enabled("segment", stage_from, stage_to):
         for source in sources:
             source_id = source["source_id"]
             cleaned_path = processed_dir / f"{source_id}_clean.wav"
+            _mark_stale_segments(source_id)
             ranges = segment_audio(
                 cleaned_path,
                 min_sec=settings.target_clip_min_sec,
@@ -217,7 +247,7 @@ def run_pipeline(
                     update_clip(clip_id, stages={"segment": {"passed": False, "reason": str(exc)}})
                 save_manifest()
 
-    if _stage_enabled("quality", stage_from):
+    if _stage_enabled("quality", stage_from, stage_to):
         for record in _iter_stage_records(limit):
             path = _audio_path(record)
             if not path:
@@ -231,7 +261,7 @@ def run_pipeline(
             update_clip(record["id"], stages={"quality_check": result})
             save_manifest()
 
-    if _stage_enabled("transcribe", stage_from):
+    if _stage_enabled("transcribe", stage_from, stage_to):
         for record in _iter_stage_records(limit):
             path = _audio_path(record)
             if not path or record["stages"]["quality_check"].get("passed") is False:
@@ -251,7 +281,7 @@ def run_pipeline(
             )
             save_manifest()
 
-    if _stage_enabled("diarize", stage_from):
+    if _stage_enabled("diarize", stage_from, stage_to):
         for record in _iter_stage_records(limit):
             path = _audio_path(record)
             if not path or record["stages"]["transcription"].get("passed") is False:
@@ -270,7 +300,7 @@ def run_pipeline(
             )
             save_manifest()
 
-    if _stage_enabled("emotion", stage_from):
+    if _stage_enabled("emotion", stage_from, stage_to):
         for record in _iter_stage_records(limit):
             transcript = record["stages"]["transcription"].get("transcript") or ""
             if not transcript:
@@ -305,6 +335,7 @@ def main() -> None:
     parser.add_argument("--language", default="en-IN")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--stage-from", choices=STAGES, default="download")
+    parser.add_argument("--stage-to", choices=STAGES, default="emotion")
     args = parser.parse_args()
 
     run_pipeline(
@@ -312,6 +343,7 @@ def main() -> None:
         language=args.language,
         limit=args.limit,
         stage_from=args.stage_from,
+        stage_to=args.stage_to,
     )
 
 

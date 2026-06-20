@@ -23,8 +23,10 @@ from __future__ import annotations
 import json
 import logging
 import os
+import shutil
 import tempfile
 import threading
+import time
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
@@ -330,7 +332,16 @@ def save_manifest() -> None:
         try:
             with os.fdopen(tmp_fd, "w", encoding="utf-8") as f:
                 f.write(payload)
-            os.replace(tmp_path, MANIFEST_PATH)
+            for attempt in range(5):
+                try:
+                    os.replace(tmp_path, MANIFEST_PATH)
+                    break
+                except PermissionError:
+                    if attempt == 4:
+                        shutil.copyfile(tmp_path, MANIFEST_PATH)
+                        os.unlink(tmp_path)
+                        break
+                    time.sleep(0.2 * (attempt + 1))
             log.debug(f"[manifest] Saved {len(records)} clips to {MANIFEST_PATH}")
         except Exception as e:
             # Clean up the temp file if the replace failed

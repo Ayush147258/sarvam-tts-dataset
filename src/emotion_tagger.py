@@ -32,7 +32,7 @@ log = logging.getLogger(__name__)
 # Constants
 # ---------------------------------------------------------------------------
 
-PROMPT_TEMPLATE_PATH = PIPELINE_ROOT / "prompts" / "emotion_classification.txt"
+PROMPT_TEMPLATE_PATH = Path(__file__).parent.parent / "prompts" / "emotion_classification.txt"
 
 VALID_EMOTION_TAGS = {
     "neutral", "happy", "sad", "excited", "angry", "formal",

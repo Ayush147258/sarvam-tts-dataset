@@ -116,42 +116,33 @@ def _resample_for_vad(input_path: Path) -> torch.Tensor:
 
 
 def _merge_short_segments(
-    segments: List[Tuple[float, float]], min_sec: float
+    segments: List[Tuple[float, float]], min_sec: float, max_sec: float
 ) -> List[Tuple[float, float]]:
-    """
-    Merge any segment shorter than min_sec into an adjacent segment.
-    Prefers merging with the next segment (extending forward in time);
-    falls back to merging with the previous segment if there's no next
-    one. This can never un-split a max_sec violation since merging only
-    combines already-short segments — a separate max_sec check should
-    run after this if merges happen to produce something too long (rare,
-    but checked defensively below).
-    """
+    """Accumulate VAD utterances into 15-30 second training clips."""
     if not segments:
         return segments
 
     merged: List[Tuple[float, float]] = []
-    i = 0
-    while i < len(segments):
-        start, end = segments[i]
-        duration = end - start
+    current_start, current_end = segments[0]
 
-        if duration < min_sec and i + 1 < len(segments):
-            # merge forward with the next segment
-            next_start, next_end = segments[i + 1]
-            merged.append((start, next_end))
-            i += 2
+    for start, end in segments[1:]:
+        proposed_duration = end - current_start
+        current_duration = current_end - current_start
+
+        if current_duration < min_sec or proposed_duration <= max_sec:
+            current_end = end
             continue
-        elif duration < min_sec and merged:
-            # no next segment to merge with — merge backward into the
-            # last accepted segment instead
-            prev_start, prev_end = merged.pop()
-            merged.append((prev_start, end))
-            i += 1
-            continue
-        else:
-            merged.append((start, end))
-            i += 1
+
+        merged.append((current_start, current_end))
+        current_start, current_end = start, end
+
+    merged.append((current_start, current_end))
+
+    if len(merged) >= 2 and (merged[-1][1] - merged[-1][0]) < min_sec:
+        prev_start, _ = merged[-2]
+        _, last_end = merged[-1]
+        if last_end - prev_start <= max_sec * 1.5:
+            merged[-2:] = [(prev_start, last_end)]
 
     return merged
 
@@ -215,7 +206,7 @@ def segment_audio(
         f"segment(s) detected before merge step"
     )
 
-    merged_segments = _merge_short_segments(segments, min_sec)
+    merged_segments = _merge_short_segments(segments, min_sec, max_sec)
 
     # Defensive check: warn (don't crash) if a merge produced something
     # over max_sec — rare, but possible if two adjacent short segments
